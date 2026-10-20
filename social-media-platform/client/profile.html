@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Profile · Circle</title>
+  <meta name="description" content="Circle — a small, friendly place to share posts and follow people.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>// Runs before the page paints so the saved theme is applied without a flash. Kept as a tiny classic script.
+(function () {
+  try {
+    var saved = localStorage.getItem('theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  } catch (e) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();</script>
+</head>
+<body>
+  <div id="shell"></div>
+  <main id="main" aria-live="polite"></main>
+  <script type="module" src="js/profile.js"></script>
+</body>
+</html>

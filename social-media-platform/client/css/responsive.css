@@ -1,0 +1,67 @@
+/* ============================================================
+   Circle — responsive breakpoints
+   Desktop (default): 3-column shell defined in styles.css.
+   Tablet: right sidebar hides. Mobile: both sidebars hide,
+   replaced by a compact header and a bottom navigation bar.
+   ============================================================ */
+
+/* ---------- tablet: hide the discovery column ---------- */
+@media (max-width: 1080px) {
+  #shell { grid-template-columns: var(--sidebar-w) minmax(0, 1fr); }
+  .sidebar-right { display: none; }
+}
+
+/* ---------- narrow tablet: icon-only left rail ---------- */
+@media (max-width: 900px) {
+  :root { --sidebar-w: 84px; }
+  .nav-label, .brand-text, .account-text { display: none; }
+  .nav-link { justify-content: center; }
+  .create-btn { padding: 12px; }
+  .account-card { justify-content: center; }
+}
+
+/* ---------- mobile: bottom nav + compact header replace sidebars ---------- */
+@media (max-width: 680px) {
+  :root { --content-max: 100%; }
+  #shell { display: block; padding: 0; max-width: 100%; }
+  .sidebar-left { display: none; }
+
+  .mobile-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px var(--space-4); padding-top: calc(10px + env(safe-area-inset-top, 0px));
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-actions { display: flex; gap: var(--space-1); }
+
+  main#main { padding: var(--space-3) var(--space-3) calc(84px + env(safe-area-inset-bottom, 0px)); }
+
+  .bottom-nav {
+    display: flex; align-items: center; justify-content: space-around;
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 20;
+    padding: 8px var(--space-2); padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+    background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px);
+    border-top: 1px solid var(--border);
+  }
+  .bottom-nav .nav-link { flex-direction: column; gap: 2px; padding: 6px 10px; font-size: 11px; border-radius: var(--radius-sm); }
+  .bottom-nav .nav-label { display: block; }
+  .bottom-create {
+    display: flex; align-items: center; justify-content: center; width: 46px; height: 46px;
+    border-radius: 50%; background: var(--accent); color: var(--accent-contrast); border: none; margin: 0 4px;
+  }
+
+  .page-header { top: 0; }
+  .profile-top { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  .profile-top .btn { align-self: flex-start; }
+  .edit-avatar-row { flex-direction: column; align-items: flex-start; }
+  .modal { width: 100vw; max-width: 100vw; max-height: 92vh; align-self: flex-end; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+  .modal[open] { margin-top: auto; }
+  .toast-region { bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+}
+
+@media (max-width: 420px) {
+  .profile-stats { gap: var(--space-4); }
+  .composer-input { font-size: 16px; } /* prevents iOS Safari from zooming in on focus */
+  .input, .textarea { font-size: 16px; }
+}
