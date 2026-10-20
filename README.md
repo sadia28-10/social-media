@@ -107,7 +107,7 @@ Every list endpoint takes `?page=1&limit=10` (offset pagination) and returns
 ## Installation
 
 ```bash
-git clone <your-repo-url> circle
+git clone <[https://github.com/sadia28-10/social-media]> circle
 cd circle/server
 npm install
 ```
